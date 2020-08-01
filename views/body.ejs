@@ -1,0 +1,34 @@
+<%- include('header'); -%>
+<body>
+    <div class="container">
+        <h1>Form</h1>
+        <form name="userForm" method="POST" action="/submitForm">
+            <div class="form-group">
+                <label for="fname">Name</label>
+                <input type="text" class="form-control" id="fname" name="fname" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <label for="faddress">Address</label>
+                <textarea class="form-control" id="faddress" name="fAddress"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="femail">Email address</label>
+              <input type="email" class="form-control" id="femail" name="femail" aria-describedby="emailHelp" placeholder="Your email">
+            </div>
+            <div class="row form-group">
+                <% products.forEach(function(elem, index) { %>
+                    <div class="col-lg-4">
+                        <input type="checkbox" name="fprod" value="<%= elem.name %>" />
+                        <label for="fprod"><%= elem.name %></label>
+                    </div>
+                <% }) %>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary"/>
+        </form>
+    </div>
+    <%if(isSaved) {%>
+        <div class="alert alert-primary" role="alert"> 
+            Saved Succesfully!!!
+        </div>
+    <%}%>
+</body>
